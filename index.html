@@ -271,7 +271,7 @@ ul.bullets-vivid li::before { content: counter(bv); position: static; counter-in
 .content > .task-instructions.compact { margin-top: var(--baseline); }
 .task-title { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: var(--type-body); margin: 0 0 12px; }
 .task-subtitle { font-size: var(--type-small); color: color-mix(in srgb, var(--color-text) 65%, transparent); margin: 12px 0 16px; }
-.task-text { font-size: var(--type-small); line-height: var(--baseline); margin: 0; }
+.task-text { font-size: calc(1.2 * var(--type-small)); line-height: var(--baseline); margin: 0; }
 .task-hint-btn { margin-top: calc(1 * var(--baseline)); padding: 24px 48px; font-size: var(--type-small); align-self: flex-start; }
 .task-hint { font-size: var(--type-small); line-height: var(--baseline); margin: calc(0.5 * var(--baseline)) 0 0; color: var(--color-accent-700); }
 .task-hint[hidden] { display: none; }
@@ -359,17 +359,25 @@ ul.bullets-vivid li::before { content: counter(bv); position: static; counter-in
 .ll-next-label { display: block; font-size: 18px; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-accent-2-700); margin-bottom: 4px; }
 .ll-cell.ll-next, .ll-cell.ll-terminal, .ll-address { font-family: 'Courier New', monospace; }
 
+.ref-slide { padding-top: var(--pad-top) !important; }
+.ref-slide .slide-title { font-size: 52px; line-height: 1.15; margin-bottom: calc(0.5 * var(--baseline)); }
+.ref-slide .ref-code { margin: 0 !important; max-width: 1632px; width: 100%; flex: 1; min-height: 0; max-height: none; font-size: 21px; line-height: 1.55; padding: 36px 44px; overflow-y: auto; cursor: zoom-in; scrollbar-width: thin; scrollbar-color: var(--color-accent-2-600) transparent; }
+.ref-slide .ref-code::-webkit-scrollbar { width: 10px; }
+.ref-slide .ref-code::-webkit-scrollbar-track { background: transparent; }
+.ref-slide .ref-code::-webkit-scrollbar-thumb { background: var(--color-accent-2-600); border-radius: 999px; }
+.ref-slide .ref-code.zoomed { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1560px; max-height: 960px; font-size: 32px; z-index: 60; cursor: zoom-out; box-shadow: var(--shadow-lg); }
+
 .task-subtitle.compact { margin-bottom: 8px; }
 .code-block.compact { padding: 40px 56px; }
 .content > .code-block.compact { margin-top: calc(2 * var(--baseline)); }
 .code-task-split { display: grid; grid-template-columns: 1fr 1.15fr; gap: 96px; align-items: start; margin-top: calc(3 * var(--baseline)); max-width: 1760px; }
 .content:has(.code-task-split.full-program) { padding-top: calc(1.6 * var(--baseline)); }
 .code-task-split.full-program { grid-template-columns: 1fr 1.35fr; align-items: stretch; margin-top: calc(0.6 * var(--baseline)); }
-.code-block.full-program { font-size: 24px; line-height: 1.3; padding: 24px 32px; max-width: none; cursor: zoom-in; }
-.code-block.full-program.zoomed { position: fixed; inset: 0; margin: auto; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.7); z-index: 60; cursor: zoom-out; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-.zoom-overlay { display: none; position: fixed; inset: 0; background: rgba(21,19,15,0.7); z-index: 50; }
+.code-block.full-program { font-size: 24px; line-height: 1.5; padding: 36px 48px; max-width: none; cursor: zoom-in; tab-size: 4; white-space: pre; overflow: auto; max-height: 620px; }
+.code-block.full-program.zoomed { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1500px; max-width: none !important; max-height: 960px; margin: 0 !important; overflow: auto; font-size: 40px; line-height: 1.35; padding: 48px 64px; z-index: 60; cursor: zoom-out; box-shadow: var(--shadow-lg); }
+.zoom-overlay { display: none; position: fixed; inset: 0; background: color-mix(in srgb, var(--color-neutral-900) 75%, transparent); z-index: 50; }
 .zoom-overlay.active { display: block; }
-.zoom-hint { font-size: 20px; color: color-mix(in srgb, var(--color-neutral-100) 60%, transparent); margin: 16px 0 0; text-align: center; font-family: var(--font-body); }
+.zoom-hint { font-size: 20px; color: var(--color-neutral-600); margin: 16px 0 0; text-align: center; font-family: var(--font-body); }
 body.zoom-active .nav-btn { pointer-events: none; }
 
 @media print {
@@ -441,7 +449,13 @@ a:hover { color: var(--color-accent-600); }
 .side-confusing .versus-caption { color: var(--color-accent-700); }
 .versus-side { flex-direction: column; gap: 8px; }
 
-.code-block.scrollable { max-height: 820px; overflow-y: auto; }
+.code-block.scrollable { font-size: 28px; line-height: 1.5; padding: 36px 48px; max-height: 600px; overflow: auto; white-space: pre; tab-size: 4; }
+.code-block { scrollbar-width: thin; scrollbar-color: var(--color-neutral-600) transparent; }
+.code-block::-webkit-scrollbar { width: 14px; height: 14px; }
+.code-block::-webkit-scrollbar-track { background: transparent; margin: 24px; }
+.code-block::-webkit-scrollbar-thumb { background: var(--color-neutral-600); border-radius: 999px; border: 4px solid var(--color-neutral-900); }
+.code-block::-webkit-scrollbar-thumb:hover { background: var(--color-neutral-500); }
+.code-block::-webkit-scrollbar-corner { background: transparent; }
 
 </style>
 </head>
@@ -515,113 +529,15 @@ a:hover { color: var(--color-accent-600); }
   </div>
 </section>
 
-<section class="slide content" data-label="תרגיל 1">
-  <h2 class="slide-title">תרגיל 1</h2>
-  <div class="zoom-overlay"></div>
-  <div class="code-task-split full-program rise">
-    <div class="task-instructions">
-      <p class="task-text">פתרו ע"פ ההוראות בקוד</p>
-      <!--p class="task-text">שורה שנייה של ההוראות - placeholder.</p-->
-    </div>
-    <div>
-      <div class="code-block full-program" dir="ltr">using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        StringNode avi = new StringNode("Avi");
-
-		// Create List of all friends in the correct order
-
-        Console.WriteLine(avi);
-    }
-}</div>
-      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
-    </div>
-  </div>
-  <div class="page-foot" aria-hidden="true"></div>
+<section class="slide cover" data-label="סיום">
+  <div class="rise"><h2 class="display">עכשיו נתרגל</h2><p class="cover-sub">נפתח את סביבת הפיתוח - ונחקור את הקוד</p></div>
+  <div class="pin-bottom meta"><span> </span></div>
 </section>
 
-<section class="slide content" data-label="תרגיל 2">
-  <h2 class="slide-title">תרגיל 2</h2>
-  <div class="zoom-overlay"></div>
-  <div class="code-task-split full-program rise">
-    <div class="task-instructions">
-      <p class="task-text">השלימו את הקוד</p>
-      <!--p class="task-text">שורה שנייה של ההוראות - placeholder.</p-->
-    </div>
-    <div>
-      <div class="code-block full-program" dir="ltr">using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        string[] names = { "Avi", "Benny", "Gadi", "Dani" };
-
-        StringNode head = BuildList(names);
-
-        // Print the list using ToString()
-        Console.WriteLine(head);
-    }
-
-    // Builds a linked list from an array of values and returns the head
-    static StringNode BuildList(string[] valueArray)
-    {
-        StringNode head = new StringNode(valueArray[0]);
-		
-        StringNode current = head;
-        for (int i = 1; i &lt; valueArray.Length; i++)
-        {
-			
-			// ...
-			
-        }
-
-        return head;
-    }
-}</div>
-      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
-    </div>
-  </div>
-  <div class="page-foot" aria-hidden="true"></div>
-</section>
-
-<section class="slide content" data-label="תרגיל 3">
-  <h2 class="slide-title">תרגיל 3</h2>
-  <div class="zoom-overlay"></div>
-  <div class="code-task-split full-program rise">
-    <div class="task-instructions">
-      <p class="task-text">צרו רשימת שמות מהקלט בעזרת לולאה</p>
-      <!--p class="task-text">שורה שנייה של ההוראות - placeholder.</p-->
-    </div>
-    <div>
-      <div class="code-block full-program" dir="ltr">using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.Write("How many names? ");
-        int count = int.Parse(Console.ReadLine());
-
-
-
-        // Print the list using ToString()
-        Console.WriteLine( ... );
-    }
-}</div>
-      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
-    </div>
-  </div>
-  <div class="page-foot" aria-hidden="true"></div>
-</section>
-
-
-<section class="slide content" data-label="מחלקת StringNode">
+<section class="slide content ref-slide" data-label="מחלקת StringNode">
   <h2 class="slide-title">מחלקת StringNode</h2>
-  <div class="code-block scrollable rise" dir="ltr" style="margin: calc(2 * var(--baseline)) auto 0; max-width: 1400px;">using System;
+  <div class="zoom-overlay"></div>
+  <div class="code-block ref-code zoomable" dir="ltr">using System;
 
 public class StringNode
 {
@@ -676,6 +592,213 @@ public class StringNode
   <div class="page-foot" aria-hidden="true"></div>
 </section>
 
+<section class="slide content" data-label="תרגיל 1">
+  <h2 class="slide-title">תרגיל 1</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-task-split full-program rise">
+    <div class="task-instructions">
+      <p class="task-text">היעזרו במחלקת StringNode</p>
+      <p class="task-text">וצרו שרשרת חוליות של הנערים - </p>
+      <p class="task-text"> ע"פ הסדר המופיע בסיפור</p>
+    </div>
+    <div>
+      <div class="code-block full-program" dir="ltr">using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        StringNode avi = new StringNode("Avi");
+
+		// Create List of all friends in the correct order
+
+        Console.WriteLine(avi);
+    }
+}</div>
+      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content" data-label="תרגיל 2">
+  <h2 class="slide-title">תרגיל 2</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-task-split full-program rise">
+    <div class="task-instructions">
+      <p class="task-text">השלימו את הקוד בפעולת BuildList</p>
+      <p class="task-text">המקבלת מערך שמות - ויוצרת ממנו שרשרת חוליות.</p>
+      <p class="task-text">(היעזרו בלולאה)</p>
+    </div>
+    <div>
+      <div class="code-block full-program" dir="ltr">using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string[] names = { "Avi", "Benny", "Gadi", "Dani" };
+        StringNode head = BuildList(names);
+        Console.WriteLine(head);
+    }
+
+    // Builds a linked list from an array of values and returns the head
+    static StringNode BuildList(string[] valueArray)
+    {
+        StringNode head = new StringNode(valueArray[0]);
+        StringNode current = head;
+        for (int i = 1; i &lt; valueArray.Length; i++)
+        {
+			// ...
+        }
+        return head;
+    }
+}</div>
+      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content" data-label="תרגיל 3">
+  <h2 class="slide-title">תרגיל 3</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-task-split full-program rise">
+    <div class="task-instructions">
+      <p class="task-text">באותו אופן, השלימו את הקוד</p>
+      <p class="task-text">על מנת לבנות שרשרת חוליות </p>
+      <p class="task-text">מנתוני קלט - ובדקו</p>
+    </div>
+    <div>
+      <div class="code-block full-program" dir="ltr">using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("How many names? ");
+        int count = int.Parse(Console.ReadLine());
+
+
+
+        // Print the list using ToString()
+        Console.WriteLine( ... );
+    }
+}</div>
+      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content" data-label="פתרון - תרגיל 1">
+  <h2 class="slide-title">פתרון - תרגיל 1</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-task-split full-program rise">
+    <div class="task-instructions"></div>
+    <div>
+      <div class="code-block full-program" dir="ltr">using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create nodes
+        StringNode avi = new StringNode("Avi");
+        StringNode benny = new StringNode("Benny");
+        StringNode gadi = new StringNode("Gadi");
+        StringNode dani = new StringNode("Dani");
+
+        // Connect nodes
+        avi.SetNext(benny);
+        benny.SetNext(gadi);
+        gadi.SetNext(dani);
+        dani.SetNext(null); // optional 
+
+        // Print the list using ToString()
+        Console.WriteLine(avi);
+    }
+}</div>
+      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content" data-label="פתרון - תרגיל 2">
+  <h2 class="slide-title">פתרון - תרגיל 2</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-task-split full-program rise">
+    <div class="task-instructions"></div>
+    <div>
+      <div class="code-block full-program" dir="ltr">using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string[] names = { "Avi", "Benny", "Gadi", "Dani" };
+        StringNode head = BuildList(names);
+        Console.WriteLine(head);
+    }
+
+    // Builds a linked list from an array of values and returns the head
+    static StringNode BuildList(string[] valueArray)
+    {
+        StringNode head = new StringNode(valueArray[0]);
+		
+        StringNode current = head;
+        for (int i = 1; i &lt; valueArray.Length; i++)
+        {
+            StringNode newNode = new StringNode(valueArray[i]);
+            current.SetNext(newNode);
+            current = newNode;
+        }
+        return head;
+    }
+}</div>
+      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
+
+<section class="slide content" data-label="פתרון - תרגיל 3">
+  <h2 class="slide-title">פתרון - תרגיל 3</h2>
+  <div class="zoom-overlay"></div>
+  <div class="code-task-split full-program rise">
+    <div class="task-instructions"></div>
+    <div>
+      <div class="code-block full-program" dir="ltr">using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("How many names? ");
+        int count = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter " + count + " names:");
+        string firstName = Console.ReadLine();
+
+        StringNode head = new StringNode(firstName);
+        StringNode current = head;
+
+        for (int i = 1; i &lt; count; i++)
+        {
+            string name = Console.ReadLine();
+            StringNode newNode = new StringNode(name);
+            current.SetNext(newNode);
+            current = newNode;
+        }
+        Console.WriteLine(head);
+    }
+}</div>
+      <p class="zoom-hint">לחצו על הקוד להגדלה</p>
+    </div>
+  </div>
+  <div class="page-foot" aria-hidden="true"></div>
+</section>
 
 <button class="nav-btn nav-prev" id="prevBtn" aria-label="השקופית הקודמת">&lsaquo;</button>
 <button class="nav-btn nav-next" id="nextBtn" aria-label="השקופית הבאה">&rsaquo;</button>
@@ -686,7 +809,13 @@ public class StringNode
 (function () {
   var slides = document.querySelectorAll('.slide');
   var idx = 0;
+  function closeZoom() {
+    document.querySelectorAll('.code-block.zoomed').forEach(function (b) { b.classList.remove('zoomed'); });
+    document.querySelectorAll('.zoom-overlay.active').forEach(function (o) { o.classList.remove('active'); });
+    document.body.classList.remove('zoom-active');
+  }
   function show(i) {
+    closeZoom();
     idx = Math.max(0, Math.min(slides.length - 1, i));
     slides.forEach(function (s, n) { s.classList.toggle('active', n === idx); });
     document.getElementById('slideCounter').textContent = (idx + 1) + ' / ' + slides.length;
@@ -694,8 +823,13 @@ public class StringNode
   document.getElementById('prevBtn').addEventListener('click', function () { if (document.body.classList.contains('zoom-active')) return; show(idx - 1); });
   document.getElementById('nextBtn').addEventListener('click', function () { if (document.body.classList.contains('zoom-active')) return; show(idx + 1); });
   window.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      var sc = document.querySelector('.code-block.zoomed') || slides[idx].querySelector('.code-block');
+      if (sc) { sc.scrollBy({ top: e.key === 'ArrowDown' ? 120 : -120, behavior: 'smooth' }); e.preventDefault(); }
+      return;
+    }
     if (document.body.classList.contains('zoom-active')) {
-      if (e.key === 'Escape') document.querySelector('.code-block.zoomed').click();
+      if (e.key === 'Escape') closeZoom();
       return;
     }
     if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
@@ -711,7 +845,11 @@ public class StringNode
   window.addEventListener('load', scale);
   if (window.ResizeObserver) new ResizeObserver(scale).observe(document.body);
   show(0);
-
+  document.querySelectorAll('.code-block').forEach(function (b) {
+    b.innerHTML = b.innerHTML
+      .replace(/"([^"\n]*)"/g, '<span class="str">"$1"</span>')
+      .replace(/(\/\/[^\n]*)/g, '<span class="cmt">$1</span>');
+  });
   document.querySelectorAll('.task-hint-btn').forEach(function (btn) {
     var hint = btn.nextElementSibling;
     if (!hint || !hint.classList.contains('task-hint')) return;
@@ -751,7 +889,7 @@ public class StringNode
     });
   });  
 
-  document.querySelectorAll('.code-block.full-program').forEach(function (block) {
+  document.querySelectorAll('.code-block.full-program, .ref-code.zoomable').forEach(function (block) {
     var overlay = block.closest('.slide').querySelector('.zoom-overlay');
     function toggle(e) {
       if (e) e.stopPropagation();
