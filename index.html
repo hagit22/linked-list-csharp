@@ -72,6 +72,7 @@ body { font-family: var(--font-body); }
   font-size: var(--type-display); line-height: calc(2.5 * var(--baseline)); margin: 0;
 }
 .cover-sub { font-size: var(--type-subtitle); line-height: var(--baseline); max-width: 38ch; margin: 0; text-wrap: balance; }
+.cover-sub-note { font-size: calc(1.03 * var(--type-small)); margin-top: 30px; font-style: italic; opacity: 40%;}
 
 .toc { display: flex; flex-direction: column; max-width: 1040px; font-size: var(--type-subtitle); }
 .centered .toc { align-items: center; }
@@ -470,19 +471,19 @@ a:hover { color: var(--color-accent-600); }
   <div class="pin-bottom meta"><span>חגית ידוב</span><span>·</span><span>2026</span></div>
 </section>
 
-<section class="slide versus" data-label="פשוט מול מבלבל">
-  <div class="versus-side side-confusing"><p class="versus-caption">העיקרון פשוט</p></div>
+<!--section class="slide versus" data-label="פשוט מול מבלבל">
+  <div class="versus-side side-confusing"><p class="versus-caption">העיקרון ברור</p></div>
   <div class="versus-side side-simple">
     <p class="versus-caption">הקוד עשוי לבלבל</p>
-    <!--span style="font-size: var(--type-small); font-weight: 400; color: color-mix(in srgb, var(--color-accent-700) 45%, transparent); margin-top: -12px;">(עד שמתרגלים)</span-->
+    <! -- span style="font-size: var(--type-small); font-weight: 400; color: color-mix(in srgb, var(--color-accent-700) 45%, transparent); margin-top: -12px;">(עד שמתרגלים)</span -- >
 </div>
-</section>
+</section-->
 
 <section class="slide agenda-slide centered" data-label="סדר יום">
   <h2 class="slide-title">אז מה עושים?</h2>
   <div class="toc rise">
     <div class="toc-row"><span class="toc-num">01</span><div class="toc-topic"><span>נדגים דרך סיפור מהחיים</span><!--span class="toc-note">תשומת לב לניואנסים - זה יעזור לכם אח"כ להבין</span--></div></div>
-    <div class="toc-row"><span class="toc-num">02</span><div class="toc-topic"><span>נראה את הסיפור כתוב בקוד, ונתרגל</span></div></div>
+    <div class="toc-row"><span class="toc-num">02</span><div class="toc-topic"><span>נראה את הסיפור כתוב בקוד - ונתרגל</span></div></div>
     <div class="toc-row"><span class="toc-num">03</span><div class="toc-topic"><span>נביא דוגמה מספרית</span><!--span class="toc-note">(בלי סיפורים)</span--></div></div>
     <div class="toc-row"><span class="toc-num">04</span><div class="toc-topic"><span>נלמד פעולות על שרשרת חוליות</span></div></div>
     <div class="toc-row"><span class="toc-num">05</span><div class="toc-topic"><span>נתרגל</span></div></div>
@@ -536,7 +537,10 @@ a:hover { color: var(--color-accent-600); }
 </section>
 
 <section class="slide cover" data-label="סיום">
-  <div class="rise"><h2 class="display">איך זה נראה בקוד?</h2><p class="cover-sub">נפתח את סביבת הפיתוח - נחקור ונתרגל</p></div>
+  <div class="rise"><h2 class="display">איך זה נראה בקוד?</h2>
+    <p class="cover-sub">נפתח את סביבת הפיתוח - נחקור ונתרגל</p>
+    <p class="cover-sub-note">(שימו לב: גם אם הרעיון מובן - הקוד עשוי לבלבל)</p>
+  </div>
   <div class="pin-bottom meta"><span> </span></div>
 </section>
 
