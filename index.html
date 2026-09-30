@@ -60,7 +60,8 @@ body { font-family: var(--font-body); }
   background: var(--color-surface); border-radius: 999px;
   padding: 8px 18px;
 }
-.page-foot::before { content: counter(page) " · "; }
+/* .page-foot::before { content: counter(page) " · "; } */
+.page-foot::before { content: "2 · "; }
 .page-foot::after { content: var(--page-foot-note); }
 
 .cover { justify-content: center; align-items: center; text-align: center; }
@@ -332,28 +333,30 @@ ul.bullets-vivid li::before { content: counter(bv); position: static; counter-in
 .dialogue-name { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: var(--type-body); margin: 0; }
 .dialogue-hint { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 16px; font-size: 32px; opacity: 1; transition: opacity 0.3s ease; animation: dialogue-bounce 1.4s ease-in-out infinite; }
 .dialogue-hint.hidden { opacity: 0; animation: none; }
+.dialogue-slide.finished .dialogue-char.active .dialogue-avatar img { animation: none; }
+
 @keyframes dialogue-bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
 
 .linked-list-slide { justify-content: center; align-items: center; }
 .ll-diagram { display: flex; align-items: flex-start; gap: 0; position: relative; padding-top: 120px; }
-.ll-head { position: absolute; top: 0; left: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; transition: opacity 0.3s ease; }
+.ll-head { position: absolute; top: -50px; left: 160px;  transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; transition: opacity 0.3s ease; }
 .ll-head.visible { opacity: 1; }
 .ll-head-label { font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: var(--type-body); color: var(--color-accent-700); }
-.ll-head-arrow { width: 3px; height: 56px; background: var(--color-accent-700); position: relative; }
+.ll-head-arrow { width: 3px; height: 80px; background: var(--color-accent-700); position: relative; }
 .ll-head-arrow::after { content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 14px solid var(--color-accent-700); }
 .ll-node { display: flex; flex-direction: column; align-items: center; }
 .ll-cells { display: flex; border: 3px solid var(--color-text); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); background: var(--color-surface); }
 .ll-cell { padding: 28px 36px; font-size: var(--type-subtitle); font-family: var(--font-heading); font-weight: var(--font-heading-weight); min-width: 160px; text-align: center; }
 .ll-cell.ll-data { color: var(--color-text); border-right: 2px solid var(--color-text); }
 .ll-cell.ll-next { color: var(--color-accent-2-700); font-size: var(--type-small); min-width: 110px; white-space: nowrap; }
-.ll-cell.ll-terminal { padding-top: 32px; font-size: var(--type-small); text-align: left; }
+.ll-cell.ll-terminal { padding-top: 32px; font-size: calc(1.2 * var(--type-small)); text-align: left; }
 .ll-node { align-items: flex-start; }
 .ll-address { margin-bottom: 8px; font-size: var(--type-small); color: color-mix(in srgb, var(--color-text) 55%, transparent); width: 150px; text-align: left; white-space: nowrap; }
 .ll-link { display: flex; align-items: center; width: 90px; height: 3px; background: var(--color-accent); position: relative; margin-top: 66px; }
 .ll-link::after { content: ''; position: absolute; right: -2px; top: 50%; transform: translateY(-50%); border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 14px solid var(--color-accent); }
 .ll-hint { position: absolute; font-size: 32px; opacity: 1; transition: opacity 0.3s ease; animation: dialogue-bounce 1.4s ease-in-out infinite; }
 .ll-hint.hidden { opacity: 0; animation: none; }
-.ll-diagram { position: relative; }
+.ll-diagram { position: relative;  transform: scale(0.88); }
 .ll-hint-null { bottom: -56px; right: 0; }
 .ll-hint-head { top: -56px; left: 0; }
 .ll-next-label { display: block; font-size: 18px; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-accent-2-700); margin-bottom: 4px; }
@@ -468,9 +471,9 @@ a:hover { color: var(--color-accent-600); }
 </section>
 
 <section class="slide versus" data-label="פשוט מול מבלבל">
-  <div class="versus-side side-simple"><p class="versus-caption">העיקרון פשוט</p></div>
-  <div class="versus-side side-confusing">
-    <p class="versus-caption">לקוד צריך להתרגל</p>
+  <div class="versus-side side-confusing"><p class="versus-caption">העיקרון פשוט</p></div>
+  <div class="versus-side side-simple">
+    <p class="versus-caption">הקוד עשוי לבלבל</p>
     <!--span style="font-size: var(--type-small); font-weight: 400; color: color-mix(in srgb, var(--color-accent-700) 45%, transparent); margin-top: -12px;">(עד שמתרגלים)</span-->
 </div>
 </section>
@@ -516,21 +519,24 @@ a:hover { color: var(--color-accent-600); }
 
 <section class="slide linked-list-slide" data-label="דיאגרמת רשימה מקושרת">
   <div class="ll-diagram" dir="ltr">
-    <div class="ll-head"><span class="ll-head-label">head</span><div class="ll-head-arrow"></div></div>
+    <!-- <div class="ll-head"><span class="ll-head-label">head</span><div class="ll-head-arrow"></div></div> -->
+    <div class="ll-head visible"><span class="ll-head-label">head</span><div class="ll-head-arrow"></div></div>
     <div class="ll-node"><div class="ll-address">צאלון 5</div><div class="ll-cells"><div class="ll-cell ll-data">Avi</div><div class="ll-cell ll-next"><span class="ll-next-label">next</span>כרכום 1</div></div></div>
     <div class="ll-link"></div>
     <div class="ll-node"><div class="ll-address">כרכום 1</div><div class="ll-cells"><div class="ll-cell ll-data">Benny</div><div class="ll-cell ll-next"><span class="ll-next-label">next</span>סביון 2</div></div></div>
     <div class="ll-link"></div>
     <div class="ll-node"><div class="ll-address">סביון 2</div><div class="ll-cells"><div class="ll-cell ll-data">Gadi</div><div class="ll-cell ll-next"><span class="ll-next-label">next</span>השולמית 3</div></div></div>
     <div class="ll-link"></div>
-    <div class="ll-node"><div class="ll-address">השולמית 3</div><div class="ll-cells"><div class="ll-cell ll-data">Dani</div><div class="ll-cell ll-next ll-terminal">?</div></div></div>
-    <p class="ll-hint ll-hint-null">👆</p>
+    <!-- <div class="ll-node"><div class="ll-address">השולמית 3</div><div class="ll-cells"><div class="ll-cell ll-data">Dani</div><div class="ll-cell ll-next ll-terminal">?</div></div></div> -->
+    <div class="ll-node"><div class="ll-address">השולמית 3</div><div class="ll-cells"><div class="ll-cell ll-data">Dani</div><div class="ll-cell ll-next ll-terminal">null</div></div></div>
+    <!-- <p class="ll-hint ll-hint-null">👆</p> -->
+    <p class="ll-hint ll-hint-null hidden">👆</p>
     <p class="ll-hint ll-hint-head hidden">👆</p>
   </div>
 </section>
 
 <section class="slide cover" data-label="סיום">
-  <div class="rise"><h2 class="display">עכשיו נתרגל</h2><p class="cover-sub">נפתח את סביבת הפיתוח - ונחקור את הקוד</p></div>
+  <div class="rise"><h2 class="display">איך זה נראה בקוד?</h2><p class="cover-sub">נפתח את סביבת הפיתוח - נחקור ונתרגל</p></div>
   <div class="pin-bottom meta"><span> </span></div>
 </section>
 
@@ -883,9 +889,11 @@ class Program
     }
     render();
     slide.addEventListener('click', function () {
-      step = (step + 1) % turns.length;
+      // step = (step + 1) % turns.length;
+      if (step >= turns.length - 1) return; step++;
       render();
-      if (step === turns.length - 1) { slide.querySelector('.dialogue-hint').classList.add('hidden'); }
+      // if (step === turns.length - 1) { slide.querySelector('.dialogue-hint').classList.add('hidden'); }
+      if (step === turns.length - 1) { slide.querySelector('.dialogue-hint').classList.add('hidden'); slide.classList.add('finished'); }
     });
   });  
 
@@ -911,7 +919,7 @@ class Program
     });
   });
 
-  document.querySelectorAll('.linked-list-slide').forEach(function (slide) {
+/*  document.querySelectorAll('.linked-list-slide').forEach(function (slide) {
     var terminal = slide.querySelector('.ll-terminal');
     var head = slide.querySelector('.ll-head');
     var hintNull = slide.querySelector('.ll-hint-null');
@@ -921,7 +929,7 @@ class Program
       if (stage === 0) { terminal.textContent = 'NULL'; hintNull.classList.add('hidden'); hintHead.classList.remove('hidden'); stage = 1; }
       else if (stage === 1) { head.classList.add('visible'); hintHead.classList.add('hidden'); stage = 2; }
     });
-  })
+  }) */
 
   document.querySelectorAll('.rail-slide').forEach(function (slide) {
     var revealBtn = slide.querySelector('.rail-reveal-btn');
